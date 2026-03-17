@@ -1,0 +1,261 @@
+body{
+  background:
+  linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+  url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d');
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  color: white;
+}
+/* NAV */
+.glass-nav{
+background: rgba(0,0,0,0.6);
+backdrop-filter: blur(10px);
+}
+
+/* MAIN */
+.main-container{
+padding-top:100px;
+}
+
+/* TARJETA CONTENEDOR */
+.card-3d-wrapper{
+perspective:1000px;
+display:flex;
+justify-content:center;
+}
+
+/* TARJETA */
+.card-inner{
+width:350px;
+height:220px;
+position:relative;
+transform-style: preserve-3d;
+transition: transform 0.8s;
+box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+}
+
+.card-inner.flip{
+transform: rotateY(180deg);
+}
+
+/* CARAS */
+.card-front, .card-back{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(135deg, #1e2a47, #243b55);
+
+  border-radius: 15px;
+  padding: 20px;
+  color: #fff;
+
+  backface-visibility: hidden;
+}
+/* FRONT */
+.card-front::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: skewX(-25deg);
+}
+
+/* BACK */
+.card-back{
+background: linear-gradient(135deg,#141414,#2a2a2a);
+transform: rotateY(180deg);
+}
+
+/* LOGOS */
+.card-brands{
+display:flex;
+gap:10px;
+justify-content:flex-end;
+}
+
+.card-brands img{
+height:25px;
+object-fit:contain;
+}
+
+/* NUMERO */
+.card-number{
+font-family:'Share Tech Mono';
+font-size:1.3rem;
+letter-spacing:3px;
+margin-top:20px;
+}
+
+/* INFO */
+.card-info{
+display:flex;
+justify-content:space-between;
+margin-top:auto;
+}
+
+.card-info small{
+font-size:0.7rem;
+opacity:0.7;
+}
+
+.card-info div{
+font-size:0.9rem;
+}
+
+/* STRIPE */
+.mag-stripe{
+height:45px;
+background:black;
+border-radius:5px;
+margin-top:10px;
+}
+
+/* CVV */
+.cvv-area{
+margin-top:auto;
+text-align:right;
+}
+
+.cvv-box{
+background:white;
+color:black;
+padding:5px 10px;
+border-radius:5px;
+display:inline-block;
+}
+
+/* FORM */
+.glass-form{
+background: rgba(255,255,255,0.05);
+border-radius:15px;
+padding:20px;
+}
+
+/* INPUTS */
+.form-control,.form-select{
+background: rgba(255,255,255,0.1);
+color:white;
+border:1px solid rgba(255,255,255,0.2);
+}
+
+.form-select option{
+color:black;
+}
+
+/* BOTON */
+.btn-premium{
+background: linear-gradient(45deg,#00f2fe,#4facfe);
+border:none;
+color:white;
+}
+
+/* FOOTER */
+.footer{
+margin-top:50px;
+padding:20px;
+background: rgba(0,0,0,0.6);
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.card-inner{
+width:280px;
+height:180px;
+}
+}
+/* ===== ANIMACIÓN FLOTANTE GENERAL ===== */
+@keyframes floating {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ===== TARJETA FLOTANDO ===== */
+.card-3d-wrapper {
+  animation: floating 5s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* SOMBRA DINÁMICA */
+.card-inner {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* HOVER TARJETA */
+.card-3d-wrapper:hover {
+  animation-play-state: paused; /* pausa flotación */
+  transform: scale(1.03);
+}
+
+.card-3d-wrapper:hover .card-inner {
+  box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+}
+
+/* ===== FORMULARIO FLOTANTE ===== */
+.glass-form {
+  animation: floating 6s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* HOVER FORM */
+.glass-form:hover {
+  animation-play-state: paused;
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.8);
+}
+
+/* ===== INPUTS EFECTO PRO ===== */
+.form-control:focus,
+.form-select:focus {
+  border-color: #00f2fe;
+  box-shadow: 0 0 10px rgba(0,242,254,0.5);
+  transform: scale(1.02);
+}
+
+/* ===== BOTÓN PREMIUM ===== */
+.btn-premium {
+  transition: all 0.3s ease;
+}
+
+.btn-premium:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0,242,254,0.6);
+}
+
+/* ===== NAVBAR SUAVE ===== */
+.glass-nav {
+  transition: all 0.3s ease;
+}
+
+.glass-nav:hover {
+  box-shadow: 0 5px 20px rgba(0,0,0,0.6);
+}
+
+/* ===== LOGOS ANIMACIÓN ===== */
+.card-brands img {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card-brands img:hover {
+  transform: scale(1.2);
+  opacity: 1;
+}
+.card-front,
+.card-back {
+  color: #ffffff;
+}
+
+.card-number,
+.card-holder,
+.card-expiration {
+  color: #ffffff;
+  letter-spacing: 2px;
+}
